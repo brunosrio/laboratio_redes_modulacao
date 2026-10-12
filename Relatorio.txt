@@ -1,0 +1,17 @@
+Integrantes:
+- ARTHUR DE SOUSA COELHO - 122210142
+- BRUNO OSORIO DE CARVALHO ALMEIDA - 122210299
+- EMMILY NERI ARAUJO ALMEIDA - 123210718
+- RAMONI REUS BARROS NEGREIROS - 122210600
+
+Considerando as duas métricas apresentadas, BER e SNR, duas modulações ficam praticamente equiparadas nos limiares observados no Experimento B: a NRZ e a NRZI. É possível observar isso na tabela acima, na qual os valores de SNR de primeiro erro da NRZ e da NRZI são os mesmos, −16 dB, e ambas não atingem o SNR de falha total na faixa testada. Em comparação, na modulação Manchester, o primeiro erro ocorre em −12 dB e o limiar de falha total é atingido em −20 dB, o que coloca NRZ e NRZI com melhor desempenho nesses critérios e Manchester em última colocação, para esse experimento. No Experimento A, nenhuma das três modulações apresentou erros na faixa testada, portanto não foi possível identificar uma diferença de robustez entre elas.
+O desempenho pior de Manchester pode ser justificado pela transição obrigatória que ocorre no meio do período de cada bit. Essa transição divide o bit em duas metades, tornando cada trecho analisado mais curto e potencialmente mais sensível a erros na identificação da frequência. No nosso caso, a configuração com menor BIT_DURATION apresentou pior desempenho, principalmente para Manchester. As outras modulações também passaram a apresentar erros, embora não tenham atingido o limiar de falha total. Como há, necessariamente, a divisão do bit em duas metades, uma duração de bit menor reduz o tempo disponível para analisar cada frequência. Uma transmissão mais lenta oferece mais tempo para essa análise e pode favorecer a robustez ao ruído.
+A aproximação das frequências também pode dificultar a decodificação. No Experimento A, a diferença entre as frequências era de 440 Hz; no Experimento B, escolhemos FREQ_LOW = 300 Hz e FREQ_HIGH = 550 Hz, reduzindo essa diferença para 250 Hz. Com os tons mais próximos, sua distinção pode se tornar mais difícil em presença de ruído. Entretanto, como também alteramos a duração do bit e a taxa de amostragem, não podemos atribuir a mudança de desempenho exclusivamente a um desses parâmetros. Para identificar o efeito de cada um, seria necessário variar um parâmetro por vez.
+Os resultados obtidos são compatíveis com a expectativa de que o ruído prejudica a identificação das frequências e aumenta a taxa de erro. Também mostram que a vantagem de sincronização de Manchester não garante o melhor desempenho sob ruído na implementação utilizada. Além disso, os experimentos simulados não representam todas as dificuldades do mundo real, como reverberação, distância entre os dispositivos e atraso no início da captura.
+Para exemplificar os resultados, podemos citar os modems que transmitem dados utilizando tons em um canal de áudio. Assim como no laboratório, o receptor precisa distinguir os sinais para recuperar os bits. Uma duração menor dos símbolos aumenta a velocidade de transmissão, mas reduz o tempo disponível para analisá-los. Dessa forma, a escolha dos parâmetros precisa considerar tanto a velocidade desejada quanto as condições de ruído do canal.
+
+Experimento em sala de aula:
+
+A ocorrência de ruído foi bem maior, por motivos de não estarmos em um ambiente controlado. Em casa, apesar da ocorrência de alguns ruídos, o ambiente é consideravelmente mais calmos, com menos ocorrência de ruídos. Consequentemente, decodidificar a mensagem foi mais fácil.
+O nível de ruído estimado foi de 50dB.
+
